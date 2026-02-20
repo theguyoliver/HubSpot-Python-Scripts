@@ -1,0 +1,42 @@
+import requests
+
+url = "https://api.hubapi.com/crm/v3/objects/companies/batch/update"
+
+payload = { "inputs": [
+        {
+            "id": "336391512261",
+            "properties": {
+                "name": "Updated Company Name - 1",
+                "domain": "updatedcompanydomainone.com",
+                "country": "United States"
+            },
+            "idProperty": "my_unique_property_name",
+            "objectWriteTraceId": "row-1"
+        },
+        {
+            "id": "336389360860",
+            "properties": {
+                "name": "Updated Company Name - 2",
+                "domain": "updatedcompanydomaintwo.com",
+                "country": "United States"
+            },
+            "objectWriteTraceId": "row-2"
+        },
+        {
+            "id": "335978180837",
+            "properties": {
+                "name": "Updated Company Name - 3",
+                "domain": "updatedcompanydomainthree.com",
+                "country": "United States"
+            },
+            "objectWriteTraceId": "row-3"
+        }
+    ] }
+headers = {
+    "Authorization": "Bearer private-key",
+    "Content-Type": "application/json"
+}
+
+response = requests.post(url, json=payload, headers=headers)
+
+print(response.text)
