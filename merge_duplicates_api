@@ -1,0 +1,18 @@
+# Can only merge one merge one record at a time and as such need to iterate over the dataframe
+
+import requests
+
+url = "https://api.hubapi.com/crm/v3/objects/companies/merge"
+
+payload = {
+    "objectIdToMerge": "403601311993",
+    "primaryObjectId": "336391512261"
+}
+headers = {
+    "private-app": "private-app-key",
+    "Content-Type": "application/json"
+}
+
+response = requests.post(url, json=payload, headers=headers)
+
+print(response.text)
